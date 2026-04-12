@@ -10,11 +10,18 @@ import kotlin.math.ceil
 import kotlin.math.floor
 
 class MainActivity : AppCompatActivity() {
+
+    private var total = 0.0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        total = savedInstanceState?.getDouble("total")?: 0.0
+        binding.resultTv.text = total.toString()
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -22,19 +29,29 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.calculateBtn.setOnClickListener {
-            val cost = binding.serviceEt.text.toString().toDouble()
-            val checkedRB = binding.group.checkedRadioButtonId
-            val tip = when(checkedRB){
-                R.id.amazing_rb ->0.2
-                R.id.good_rb -> 0.18
-                else -> 0.15
-            }
-            var total = cost * tip
-            if (binding.roundTipSwitch.isChecked)
-                total = floor(total)
+            if (binding.serviceEt.text.isNullOrEmpty())
+            else{
+                val cost = binding.serviceEt.text.toString().toDouble()
+                val checkedRB = binding.group.checkedRadioButtonId
+                val tip = when(checkedRB){
+                    R.id.amazing_rb ->0.2
+                    R.id.good_rb -> 0.18
+                    else -> 0.15
+                }
+                 total = cost * tip
+                if (binding.roundTipSwitch.isChecked)
+                    total = floor(total)
 
-            binding.resultTv.text = "$$total"
+                binding.resultTv.text = "$$total"
+            }
+
         }
 
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putDouble("total",total)
+    }
+
 }
