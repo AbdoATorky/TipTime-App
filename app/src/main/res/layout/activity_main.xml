@@ -10,69 +10,72 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/service_et"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Cost of service"
-            android:inputType="number"
-            android:id="@+id/service_et"/>
+            android:inputType="number" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="How was the service ?"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp"
+        android:text="How was the service ?" />
 
     <RadioGroup
-        android:checkedButton="@id/amazing_rb"
         android:id="@+id/group"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:checkedButton="@id/amazing_rb">
 
         <RadioButton
             android:id="@+id/amazing_rb"
-            android:text="Amazing (20%)"
+            style="@style/MyRB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:text="Amazing (20%)" />
 
         <RadioButton
             android:id="@+id/good_rb"
-            android:text="Good (18%)"
+            style="@style/MyRB"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="Good (18%)" />
+
         <RadioButton
             android:id="@+id/ok_rb"
-            android:text="Ok (15%)"
+            style="@style/MyRB"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="Ok (15%)" />
 
     </RadioGroup>
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/round_tip_switch"
-        android:checked="true"
-        android:text="Round up tip?"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="Round up tip?" />
 
     <Button
         android:id="@+id/cal_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Calculator"/>
+        android:text="Calculator" />
 
     <TextView
         android:id="@+id/result_tv"
-        android:layout_gravity="end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="tip amount"/>
+        android:layout_gravity="end"
+        android:text="tip amount" />
 
 </LinearLayout>

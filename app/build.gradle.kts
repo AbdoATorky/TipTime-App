@@ -3,6 +3,12 @@ plugins {
 }
 
 android {
+
+    buildFeatures{
+        viewBinding = true
+    }
+
+    
     namespace = "com.abs.tiptimeapp"
     compileSdk {
         version = release(36) {
