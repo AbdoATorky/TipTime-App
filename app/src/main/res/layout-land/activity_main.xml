@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -30,35 +29,35 @@
         android:text="How was the service ?" />
 
     <RadioGroup
-        android:weightSum="3"
-        android:orientation="horizontal"
         android:id="@+id/group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:checkedButton="@id/amazing_rb">
+        android:checkedButton="@id/amazing_rb"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
         <RadioButton
-            android:layout_weight="1"
             android:id="@+id/amazing_rb"
             style="@style/MyRB"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Amazing (20%)" />
 
         <RadioButton
-            android:layout_weight="1"
             android:id="@+id/good_rb"
             style="@style/MyRB"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Good (18%)" />
 
         <RadioButton
-            android:layout_weight="1"
             android:id="@+id/ok_rb"
             style="@style/MyRB"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Ok (15%)" />
 
     </RadioGroup>

@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.abs.tiptimeapp.databinding.ActivityMainBinding
-import kotlin.math.ceil
 import kotlin.math.floor
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        total = savedInstanceState?.getDouble("total")?: 0.0
+        total = savedInstanceState?.getDouble("total") ?: 0.0
         binding.resultTv.text = total.toString()
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -30,15 +29,15 @@ class MainActivity : AppCompatActivity() {
 
         binding.calculateBtn.setOnClickListener {
             if (binding.serviceEt.text.isNullOrEmpty())
-            else{
+            else {
                 val cost = binding.serviceEt.text.toString().toDouble()
                 val checkedRB = binding.group.checkedRadioButtonId
-                val tip = when(checkedRB){
-                    R.id.amazing_rb ->0.2
+                val tip = when (checkedRB) {
+                    R.id.amazing_rb -> 0.2
                     R.id.good_rb -> 0.18
                     else -> 0.15
                 }
-                 total = cost * tip
+                total = cost * tip
                 if (binding.roundTipSwitch.isChecked)
                     total = floor(total)
 
@@ -51,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putDouble("total",total)
+        outState.putDouble("total", total)
     }
 
 }
