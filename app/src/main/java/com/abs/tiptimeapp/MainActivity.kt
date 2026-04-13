@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.abs.tiptimeapp.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import kotlin.math.floor
 
 class MainActivity : AppCompatActivity() {
@@ -42,6 +44,15 @@ class MainActivity : AppCompatActivity() {
                     total = floor(total)
 
                 binding.resultTv.text = "$$total"
+
+                Snackbar.make(binding.root,"Reset Everything ?", BaseTransientBottomBar.LENGTH_INDEFINITE)
+                    .setAction("Proceed"){
+                        binding.serviceEt.text?.clear()
+                        binding.group.check(R.id.amazing_rb)
+                        binding.roundTipSwitch.isChecked = true
+                        binding.resultTv.text ="Tip Amount"
+                    }
+                    .show()
             }
 
         }
